@@ -60,7 +60,7 @@ public class ApptTest {
 	 @Test
 	 public void test03() throws Throwable {
 		 Appt a3 = new Appt(1, 1, 2, 2, 2018, "A", "B");
-		 try{ assertEquals("\t02/2/2018 at 1:01pm ,A, B.\n", a3.toString()); } finally{}
+		 try{ assertEquals("\t02/2/2018 at 1:1pm ,A, B.\n", a3.toString()); } finally{}
 	 }
 
 	 @Test

@@ -80,6 +80,7 @@ public class CalDay {
 					getAppts().add(i, appt);
 					return;
 				}
+				getAppts().add(i, appt);
 			}
 		}
 	}
@@ -128,7 +129,7 @@ public class CalDay {
 	
 	/** Sets year */
 	private void setYear(int year) {
-	    year = year;
+	    this.year = year;
 	}
 	
 	/** Gets appts */

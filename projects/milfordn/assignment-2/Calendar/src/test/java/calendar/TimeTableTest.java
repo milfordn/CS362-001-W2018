@@ -20,8 +20,6 @@ public class TimeTableTest {
 	Appt a3 = new Appt(4, 1, 20, 3, 2018, "Last Final", "Probably Algorithms");
 	Appt a4 = new Appt(5, 1, 26, 4, 2018, "Birthday", "increment age");
 
-
-
 	TimeTable t = new TimeTable();
 
 	@Test
@@ -104,5 +102,19 @@ public class TimeTableTest {
 
 		t.permute(l, is);
 	}
+
+	@Test
+	public void test06() throws Throwable {
+		Appt recur = new Appt(1, 40, 2, 1, 2018, "CS325", "Algorithms");
+		int[] recurDays = {1, 3, 5};
+		recur.setRecurrence(recurDays, Appt.RECUR_BY_WEEKLY, 1, 10);
+		assert(recur.isRecurring());
+
+		LinkedList<Appt> classes = new LinkedList<Appt>();
+		classes.add(recur);
+
+		LinkedList<CalDay> feb = t.getApptRange(classes, new GregorianCalendar(2018, GregorianCalendar.JANUARY, 4), new GregorianCalendar(2018, GregorianCalendar.MARCH, 20));
+		assertEquals(21, feb.size());
+	}  
 //add more unit tests as you needed
 }
