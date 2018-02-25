@@ -70,12 +70,12 @@ public class ValuesGenerator {
 
 	    int[] tempArray=new int [n];
 
+		if(ValuesGenerator.getBoolean(SET_TO_NULL, random)) return null;
+
 	    for (int i = 0; i < n; i++)
 	    {
 	    	tempArray[i]=getRandomIntBetween(random,0,MAX_VALUE);
 	    }
-	   return tempArray;
-	   
-	
+	   return tempArray;	   	
 	} 
 }

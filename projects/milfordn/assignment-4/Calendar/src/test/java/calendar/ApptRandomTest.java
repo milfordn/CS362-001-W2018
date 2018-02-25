@@ -23,7 +23,7 @@ public class ApptRandomTest {
 	 * Return a randomly selected method to be tests !.
 	 */
     public static String RandomSelectMethod(Random random){
-        String[] methodArray = new String[] {"setTitle","setRecurrence"};// The list of the of methods to be tested in the Appt class
+        String[] methodArray = new String[] {"setTitle","setRecurrence","setStart"};// The list of the of methods to be tested in the Appt class
 
     	int n = random.nextInt(methodArray.length);// get a random number between 0 (inclusive) and  methodArray.length (exclusive)
     	            
@@ -33,7 +33,7 @@ public class ApptRandomTest {
 	 * Return a randomly selected appointments to recur Weekly,Monthly, or Yearly !.
 	 */
     public static int RandomSelectRecur(Random random){
-        int[] RecurArray = new int[] {Appt.RECUR_BY_WEEKLY,Appt.RECUR_BY_MONTHLY,Appt.RECUR_BY_YEARLY};// The list of the of setting appointments to recur Weekly,Monthly, or Yearly
+        int[] RecurArray = new int[] {Appt.RECUR_BY_WEEKLY,Appt.RECUR_BY_MONTHLY,Appt.RECUR_BY_YEARLY, 0};// The list of the of setting appointments to recur Weekly,Monthly, or Yearly
 
     	int n = random.nextInt(RecurArray.length);// get a random number between 0 (inclusive) and  RecurArray.length (exclusive)
         return RecurArray[n] ; // return the value of the  appointments to recur 
@@ -83,18 +83,24 @@ public class ApptRandomTest {
 			 if(!appt.getValid())continue;
 			for (int i = 0; i < NUM_TESTS; i++) {
 					String methodName = ApptRandomTest.RandomSelectMethod(random);
-					   if (methodName.equals("setTitle")){
+					if (methodName.equals("setTitle")){
 						   String newTitle=(String) ValuesGenerator.getString(random);
 						   appt.setTitle(newTitle);						   
-						}
-					   else if (methodName.equals("setRecurrence")){
+					}
+					else if (methodName.equals("setRecurrence")){
 						   int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
 						   int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
 						   int recur=ApptRandomTest.RandomSelectRecur(random);
 						   int recurIncrement = ValuesGenerator.RandInt(random);
 						   int recurNumber=ApptRandomTest.RandomSelectRecurForEverNever(random);
 						   appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
-						}				
+					}				
+					else if(methodName.equals("setStart")){
+						appt.setStartDay(ValuesGenerator.getRandomIntBetween(random, -10, 40));
+						appt.setStartMinute(ValuesGenerator.getRandomIntBetween(random, -10, 70));
+						appt.setStartHour(ValuesGenerator.getRandomIntBetween(random, -10, 70));
+						appt.setStartMonth(ValuesGenerator.getRandomIntBetween(random, 1, 11));
+					}
 				}
 				
 				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
