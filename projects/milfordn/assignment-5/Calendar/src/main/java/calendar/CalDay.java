@@ -81,8 +81,7 @@ public class CalDay {
 					return;
 				}
 			}
-		    //The appointment hasn't been added yet, so add it
-		    getAppts().add(appt);
+			getAppts().add(i, appt);
 		}
 	}
 
@@ -130,7 +129,7 @@ public class CalDay {
 	
 	/** Sets year */
 	private void setYear(int year) {
-	    this.year = year;
+	    year = year;
 	}
 	
 	/** Gets appts */

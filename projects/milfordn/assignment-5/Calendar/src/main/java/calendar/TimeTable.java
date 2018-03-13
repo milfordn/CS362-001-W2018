@@ -42,7 +42,7 @@ public class TimeTable {
 	        
 	        
 	        //Create the first CalDay object with the starting date and add to list
-	        GregorianCalendar nextDay = (GregorianCalendar) firstDay.clone();
+	        GregorianCalendar nextDay = firstDay;
 	        while (nextDay.before(lastDay)) {
 
 	            calDays.add(new CalDay(nextDay));
@@ -118,9 +118,7 @@ public class TimeTable {
 	                
 	                //Calculate the next recurrence day
 	                occurrenceDay = getNextApptOccurrence(appt, occurrenceDay);
-	                if (occurrenceDay == null) {
-	                    break;
-	                }
+
 	                            
 	                //Keep cycling while the occurence day is in range
 	                if (!occurrenceDay.before(lastDay)) {
@@ -171,7 +169,7 @@ public class TimeTable {
 	                        }
 	                    }
 	                }
-	                
+					
 	                //The loop above should have found a day. If the program 
 	                //execution is here then the weekdays specified are not in the
 	                //range of valid Gregorian Calendar Days. Return null here.
