@@ -1,0 +1,20 @@
+Bug 1
+	Appt.isValid()
+	Appt.valid is always true
+	Found by ApptTests.test03, line 74: testing that Appt is valid for valid starting conditions.
+	Lines 115, 118, 121, 124
+	"&&" should be "||"
+
+Bug 2
+	CalDay.CalDay()	
+	an empty, default calendar day is valid instead of correctly being marked as invalid.
+	Found by CalDayTests.test03, line 56: testing that an empty CalDay is invalid.
+	Line 43
+	valid should be set to false
+
+Bug 3
+	TimeTable.getApptRange()
+	getApptRange throws an exception when used properly, and continues execution when the arguments are not valid
+	Found by TimeTableTests.test01, line 38
+	Line 39
+	firstDay.before(lastDay) should be lastDay.before(firstDay)
